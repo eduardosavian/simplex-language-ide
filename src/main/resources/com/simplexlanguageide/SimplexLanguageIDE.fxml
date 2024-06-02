@@ -1,22 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.SeparatorMenuItem?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
-<VBox fx:id="vboxWindow" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16.0.7" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.simplexlanguageide.SimplexLanguageIDEController">
+<VBox fx:id="vboxWindow" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.simplexlanguageide.SimplexLanguageIDEController">
   <MenuBar VBox.vgrow="NEVER">
     <Menu mnemonicParsing="false" text="File">
       <MenuItem fx:id="newMenuItem" mnemonicParsing="false" text="New" />
@@ -30,6 +20,14 @@
       <SeparatorMenuItem mnemonicParsing="false" />
       <MenuItem fx:id="quitMenuItem" mnemonicParsing="false" text="Quit" />
     </Menu>
+    <Menu mnemonicParsing="false" text="Run">
+      <MenuItem fx:id="lexicalAnalysisMenuItem" mnemonicParsing="false" text="Lexical Analysis" />
+      <MenuItem fx:id="syntaxAnalysisMenuItem" mnemonicParsing="false" text="Syntax Analysis" />
+      <MenuItem fx:id="semanticAnalysisMenuItem" mnemonicParsing="false" text="Semantic Analysis" />
+      <SeparatorMenuItem mnemonicParsing="false" />
+      <MenuItem fx:id="intermediateCodeGenerationMenuItem" mnemonicParsing="false" text="Intermediate Code Generation" />
+      <MenuItem fx:id="codeGenerationMenuItem" mnemonicParsing="false" text="Code Generation" />
+    </Menu>
     <Menu mnemonicParsing="false" text="Edit">
       <MenuItem fx:id="undoMenuItem" mnemonicParsing="false" text="Undo" />
       <MenuItem fx:id="redoMenuItem" mnemonicParsing="false" text="Redo" />
@@ -42,37 +40,26 @@
       <MenuItem fx:id="selectAllMenuItem" mnemonicParsing="false" text="Select All" />
       <MenuItem fx:id="unselectAllMenuItem" mnemonicParsing="false" text="Unselect All" />
     </Menu>
-    <Menu mnemonicParsing="false" text="Run">
-      <MenuItem fx:id="lexicalAnalysisMenuItem" mnemonicParsing="false" text="Lexical Analysis" />
-      <MenuItem fx:id="syntaxAnalysisMenuItem" mnemonicParsing="false" text="Syntax Analysis" />
-      <MenuItem fx:id="semanticAnalysisMenuItem" mnemonicParsing="false" text="Semantic Analysis" />
-      <SeparatorMenuItem mnemonicParsing="false" />
-      <MenuItem fx:id="intermediateCodeGenerationMenuItem" mnemonicParsing="false" text="Intermediate Code Generation" />
-      <MenuItem fx:id="codeGenerationMenuItem" mnemonicParsing="false" text="Code Generation" />
-    </Menu>
     <Menu mnemonicParsing="false" text="Help">
       <MenuItem mnemonicParsing="false" text="About Simplex Language and Simplex Language IDE" />
       <MenuItem mnemonicParsing="false" text="About Simplex Language write" />
     </Menu>
   </MenuBar>
-  <SplitPane dividerPositions="0.2505567928730512, 0.7505567928730512" focusTraversable="true" VBox.vgrow="ALWAYS">
-    <AnchorPane>
-      <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" minWidth="60.0" style="&#10;" text="Master" textAlignment="CENTER">
-        <font>
-          <Font size="18.0" fx:id="x1" />
-        </font>
-        <textFill>
-          <Color red="0.624" green="0.624" blue="0.624" fx:id="x2" />
-        </textFill>
-      </Label>
-    </AnchorPane>
+  <SplitPane dividerPositions="0.8" focusTraversable="true" VBox.vgrow="ALWAYS">
     <ScrollPane>
       <AnchorPane id="Content" prefHeight="545.0" prefWidth="430.0">
-        <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Code" textAlignment="CENTER" textFill="$x2" />
-        <TextArea fx:id="textArea" layoutX="14.0" layoutY="40.0" prefHeight="500.0" prefWidth="400.0" />
+        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="&#10;" text="Code" textAlignment="CENTER">
+          <font>
+            <Font size="18.0" fx:id="x1" />
+          </font>
+          <textFill>
+            <Color red="0.624" green="0.624" blue="0.624" fx:id="x2" />
+          </textFill>
+        </Label>
+        <TextArea fx:id="textArea" layoutX="14.0" layoutY="40.0" prefHeight="500.0" prefWidth="700.0" />
       </AnchorPane>
     </ScrollPane>
-    <AnchorPane>
+    <AnchorPane prefHeight="551.0" prefWidth="200.0">
       <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="$x2" />
     </AnchorPane>
   </SplitPane>
