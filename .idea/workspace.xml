@@ -10,13 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc4ad058-9eee-460a-9803-24751be0d375" name="Changes" comment="Add bbase">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/simplex_language_ide_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/simplex_language_ide_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/simplex-language-ide.jar" beforeDir="false" afterPath="$PROJECT_DIR$/simplex-language-ide.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/simplexlanguageide/SimplexLanguageIDEApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/simplexlanguageide/SimplexLanguageIDEApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/simplexlanguageide/SimplexLanguageIDEController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/simplexlanguageide/SimplexLanguageIDEController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/simplexlanguageide/SimplexLanguageIDE.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/simplexlanguageide/SimplexLanguageIDE.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,6 +22,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "eduardosavian"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "git@github.com:eduardosavian/simplex-language-ide.git",
+    "accountId": "0abc40a4-a60e-4539-9f1f-a7479f7dca2a"
+  }
+}]]></component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -46,29 +53,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Run Simplex Application.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SimplexLanguageIDEApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/eduar/OneDrive/Projects/simplex-language-ide&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Run Simplex Application.executor": "Run",
+    "Application.SimplexLanguageIDEApplication.executor": "Run",
+    "Application.Unnamed.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/eduardo/simplex-language-ide",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.JavaFX",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Run Simplex Application" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.simplexlanguageide.SimplexLanguageIDEApplication" />
@@ -94,6 +101,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1717346073990</updated>
+      <workItem from="1717358165888" duration="388000" />
     </task>
     <task id="LOCAL-00001" summary="Add bbase">
       <option name="closed" value="true" />

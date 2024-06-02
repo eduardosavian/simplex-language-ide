@@ -105,9 +105,9 @@ public class SimplexLanguageIDEController {
         selectAllMenuItem.setOnAction(event -> handleSelectAll());
         unselectAllMenuItem.setOnAction(event -> handleUnselectAll());
 
-        lexicalAnalysisMenuItem.setOnAction(event -> run("lexical"));
-        syntaxAnalysisMenuItem.setOnAction(event -> run("syntax"));
-        semanticAnalysisMenuItem.setOnAction(event -> run("semantic"));
+        lexicalAnalysisMenuItem.setOnAction(event -> run("lex -verbose"));
+        syntaxAnalysisMenuItem.setOnAction(event -> run("parse -verbose"));
+        semanticAnalysisMenuItem.setOnAction(event -> run("check -verbose"));
         intermediateCodeGenerationMenuItem.setOnAction(event -> run("intermediate"));
         codeGenerationMenuItem.setOnAction(event -> run("code"));
     }

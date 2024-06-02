@@ -6,12 +6,11 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<VBox fx:id="vboxWindow" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.simplexlanguageide.SimplexLanguageIDEController">
+<VBox fx:id="vboxWindow" prefHeight="900.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.simplexlanguageide.SimplexLanguageIDEController">
   <MenuBar VBox.vgrow="NEVER">
     <Menu mnemonicParsing="false" text="File">
       <MenuItem fx:id="newMenuItem" mnemonicParsing="false" text="New" />
       <MenuItem fx:id="openMenuItem" mnemonicParsing="false" text="Open…" />
-      <Menu mnemonicParsing="false" text="Open Recent" />
       <SeparatorMenuItem mnemonicParsing="false" />
       <MenuItem fx:id="closeMenuItem" mnemonicParsing="false" text="Close" />
       <MenuItem fx:id="saveMenuItem" mnemonicParsing="false" text="Save" />
@@ -64,5 +63,7 @@
 
     </AnchorPane>
   </SplitPane>
-  <TextArea fx:id="terminalTextArea" prefHeight="200.0" prefWidth="900.0" />
+  <ScrollPane VBox.vgrow="ALWAYS">
+    <TextArea fx:id="terminalTextArea" prefHeight="200.0" prefWidth="900.0"/>
+  </ScrollPane>
 </VBox>
