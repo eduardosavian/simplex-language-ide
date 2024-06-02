@@ -2,6 +2,7 @@ package com.simplexlanguageide;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
@@ -10,8 +11,10 @@ import javafx.stage.Stage;
 
 import java.io.*;
 import java.nio.file.Files;
+import java.util.Objects;
 
 public class SimplexLanguageIDEController {
+    public TextArea assemblyTextArea;
     @FXML
     private VBox vboxWindow;
 
@@ -25,10 +28,10 @@ public class SimplexLanguageIDEController {
     private MenuItem semanticAnalysisMenuItem;
 
     @FXML
-    private MenuItem intermediateCodeGenerationMenuItem;
+    private MenuItem codeGeneratio;
 
     @FXML
-    private MenuItem codeGenerationMenuItem;
+    private MenuItem runMenuItem;
 
     @FXML
     private MenuItem newMenuItem;
@@ -105,11 +108,11 @@ public class SimplexLanguageIDEController {
         selectAllMenuItem.setOnAction(event -> handleSelectAll());
         unselectAllMenuItem.setOnAction(event -> handleUnselectAll());
 
-        lexicalAnalysisMenuItem.setOnAction(event -> run("lex -verbose"));
-        syntaxAnalysisMenuItem.setOnAction(event -> run("parse -verbose"));
-        semanticAnalysisMenuItem.setOnAction(event -> run("check -verbose"));
-        intermediateCodeGenerationMenuItem.setOnAction(event -> run("intermediate"));
-        codeGenerationMenuItem.setOnAction(event -> run("code"));
+        lexicalAnalysisMenuItem.setOnAction(event -> run("analysis", "lex -verbose"));
+        syntaxAnalysisMenuItem.setOnAction(event -> run("analysis","parse -verbose"));
+        semanticAnalysisMenuItem.setOnAction(event -> run("analysis","check -verbose"));
+        codeGeneratio.setOnAction(event -> run("code","compile"));
+        runMenuItem.setOnAction(event -> run("code","run"));
     }
 
     private void handleNew() {
@@ -212,8 +215,11 @@ public class SimplexLanguageIDEController {
 
 
     @FXML
-    private void run(String arg) {
+    private void run(String type, String arg) {
         String codeText = textArea.getText();
+
+        terminalTextArea.clear();
+        assemblyTextArea.clear();
 
         try {
             // Create a temporary file to store the code
@@ -222,13 +228,22 @@ public class SimplexLanguageIDEController {
                 writer.write(codeText);
             }
 
+            File tempFile2 = File.createTempFile("temp_code", ".txt");
+            try (FileWriter writer = new FileWriter(tempFile2)) {
+                writer.write(codeText);
+            }
+
             // Get the absolute path of the temporary file
             String tempFilePath = tempFile.getAbsolutePath();
+            String tempFilePath2 = tempFile2.getAbsolutePath();
 
             // Specify the absolute path to the Linux executable
             String executablePath = "src/main/resources/libs/simplex-language";
 
             // Construct the command to execute the Linux executable
+            if (Objects.equals(arg, "compile") || Objects.equals(arg, "run")) {
+                arg = "compile -out:" + tempFilePath2;
+            }
             String command = executablePath + " " + tempFilePath + " " + arg;
 
             System.out.println("Command: " + command);
@@ -253,11 +268,42 @@ public class SimplexLanguageIDEController {
             int exitCode = process.waitFor();
             System.out.println("Process exited with code: " + exitCode);
 
-            // Delete the temporary file after execution
+            // Display the content of tempFile2 in the label description
+            if (Objects.equals(type, "code")) {
+                String content = Files.readString(tempFile2.toPath());
+                assemblyTextArea.setText(content);
+            }
+
+            if (Objects.equals(type, "code")) {
+                terminalTextArea.setText("safasaf");
+                String command2 = "java -jar src/main/resources/libs/rars.jar a " + tempFilePath2;
+                System.out.println(command2);
+
+                ProcessBuilder processBuilder2 = new ProcessBuilder(command2.split(" "));
+                processBuilder2.redirectErrorStream(true); // Redirect error stream to input stream
+
+                Process process2 = processBuilder2.start();
+
+                // Read output from the process and append it to terminalTextArea
+                try (BufferedReader reader = new BufferedReader(new InputStreamReader(process2.getInputStream()))) {
+                    StringBuilder output = new StringBuilder();
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        output.append(line).append("\n");
+                    }
+                    terminalTextArea.setText(output.toString());
+                }
+
+            }
+
+            // Delete the temporary files after execution
             tempFile.delete();
+            tempFile2.delete();
 
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }
+
+
 }

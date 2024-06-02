@@ -36,8 +36,8 @@
       <MenuItem fx:id="syntaxAnalysisMenuItem" mnemonicParsing="false" text="Syntax Analysis" />
       <MenuItem fx:id="semanticAnalysisMenuItem" mnemonicParsing="false" text="Semantic Analysis" />
       <SeparatorMenuItem mnemonicParsing="false" />
-      <MenuItem fx:id="intermediateCodeGenerationMenuItem" mnemonicParsing="false" text="Intermediate Code Generation" />
-      <MenuItem fx:id="codeGenerationMenuItem" mnemonicParsing="false" text="Code Generation" />
+      <MenuItem fx:id="codeGeneratio" mnemonicParsing="false" text="Code Generation" />
+      <MenuItem fx:id="runMenuItem" mnemonicParsing="false" text="Run" />
     </Menu>
     <Menu mnemonicParsing="false" text="Help">
       <MenuItem mnemonicParsing="false" text="About Simplex Language and Simplex Language IDE" />
@@ -59,8 +59,8 @@
       </AnchorPane>
     </ScrollPane>
     <AnchorPane prefHeight="551.0" prefWidth="200.0">
-      <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="$x2" />
-
+      <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Assembly" textAlignment="CENTER" textFill="$x2" />
+      <TextArea fx:id="assemblyTextArea" layoutX="14.0" layoutY="40.0" prefHeight="500.0" prefWidth="700.0" />
     </AnchorPane>
   </SplitPane>
   <ScrollPane VBox.vgrow="ALWAYS">
