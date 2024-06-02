@@ -13,6 +13,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/simplex-language-ide.jar" beforeDir="false" afterPath="$PROJECT_DIR$/simplex-language-ide.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/simplexlanguageide/SimplexLanguageIDEController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/simplexlanguageide/SimplexLanguageIDEController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/simplexlanguageide/SimplexLanguageIDE.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/simplexlanguageide/SimplexLanguageIDE.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

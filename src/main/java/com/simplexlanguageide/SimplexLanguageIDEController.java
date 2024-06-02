@@ -14,9 +14,14 @@ import java.nio.file.Files;
 import java.util.Objects;
 
 public class SimplexLanguageIDEController {
-    public TextArea assemblyTextArea;
     @FXML
-    private VBox vboxWindow;
+    private TextArea assemblyTextArea;
+
+    @FXML
+    private MenuItem saveAssemblyMenuItem;
+
+    @FXML
+    private MenuItem saveAssemblyAsMenuItem;
 
     @FXML
     private MenuItem lexicalAnalysisMenuItem;
@@ -93,6 +98,8 @@ public class SimplexLanguageIDEController {
         openMenuItem.setOnAction(event -> handleOpen());
         saveMenuItem.setOnAction(event -> handleSave());
         saveAsMenuItem.setOnAction(event -> handleSaveAs());
+        saveAssemblyMenuItem.setOnAction(event -> handleSave());
+        saveAssemblyAsMenuItem.setOnAction(event -> handleSaveAs());
         closeMenuItem.setOnAction(event -> handleClose());
         revertMenuItem.setOnAction(event -> handleRevert());
         quitMenuItem.setOnAction(event -> handleQuit());
@@ -113,6 +120,33 @@ public class SimplexLanguageIDEController {
         semanticAnalysisMenuItem.setOnAction(event -> run("analysis","check -verbose"));
         codeGeneratio.setOnAction(event -> run("code","compile"));
         runMenuItem.setOnAction(event -> run("code","run"));
+        saveAssemblyMenuItem.setOnAction(event -> handleSaveAssembly());
+        saveAssemblyAsMenuItem.setOnAction(event -> handleSaveAssemblyAs());
+
+    }
+
+    private void handleSaveAssembly() {
+        if (currentFile != null) {
+            saveAssemblyToFile(currentFile);
+        } else {
+            handleSaveAssemblyAs();
+        }
+    }
+
+    private void handleSaveAssemblyAs() {
+        FileChooser fileChooser = new FileChooser();
+        File file = fileChooser.showSaveDialog(new Stage());
+        if (file != null) {
+            saveAssemblyToFile(file);
+        }
+    }
+
+    private void saveAssemblyToFile(File file) {
+        try {
+            Files.writeString(file.toPath(), assemblyTextArea.getText());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void handleNew() {
