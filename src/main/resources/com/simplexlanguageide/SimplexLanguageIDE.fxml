@@ -20,14 +20,6 @@
       <SeparatorMenuItem mnemonicParsing="false" />
       <MenuItem fx:id="quitMenuItem" mnemonicParsing="false" text="Quit" />
     </Menu>
-    <Menu mnemonicParsing="false" text="Run">
-      <MenuItem fx:id="lexicalAnalysisMenuItem" mnemonicParsing="false" text="Lexical Analysis" />
-      <MenuItem fx:id="syntaxAnalysisMenuItem" mnemonicParsing="false" text="Syntax Analysis" />
-      <MenuItem fx:id="semanticAnalysisMenuItem" mnemonicParsing="false" text="Semantic Analysis" />
-      <SeparatorMenuItem mnemonicParsing="false" />
-      <MenuItem fx:id="intermediateCodeGenerationMenuItem" mnemonicParsing="false" text="Intermediate Code Generation" />
-      <MenuItem fx:id="codeGenerationMenuItem" mnemonicParsing="false" text="Code Generation" />
-    </Menu>
     <Menu mnemonicParsing="false" text="Edit">
       <MenuItem fx:id="undoMenuItem" mnemonicParsing="false" text="Undo" />
       <MenuItem fx:id="redoMenuItem" mnemonicParsing="false" text="Redo" />
@@ -39,6 +31,14 @@
       <SeparatorMenuItem mnemonicParsing="false" />
       <MenuItem fx:id="selectAllMenuItem" mnemonicParsing="false" text="Select All" />
       <MenuItem fx:id="unselectAllMenuItem" mnemonicParsing="false" text="Unselect All" />
+    </Menu>
+    <Menu mnemonicParsing="false" text="Run">
+      <MenuItem fx:id="lexicalAnalysisMenuItem" mnemonicParsing="false" text="Lexical Analysis" />
+      <MenuItem fx:id="syntaxAnalysisMenuItem" mnemonicParsing="false" text="Syntax Analysis" />
+      <MenuItem fx:id="semanticAnalysisMenuItem" mnemonicParsing="false" text="Semantic Analysis" />
+      <SeparatorMenuItem mnemonicParsing="false" />
+      <MenuItem fx:id="intermediateCodeGenerationMenuItem" mnemonicParsing="false" text="Intermediate Code Generation" />
+      <MenuItem fx:id="codeGenerationMenuItem" mnemonicParsing="false" text="Code Generation" />
     </Menu>
     <Menu mnemonicParsing="false" text="Help">
       <MenuItem mnemonicParsing="false" text="About Simplex Language and Simplex Language IDE" />
@@ -61,21 +61,8 @@
     </ScrollPane>
     <AnchorPane prefHeight="551.0" prefWidth="200.0">
       <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="$x2" />
+
     </AnchorPane>
   </SplitPane>
-  <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
-    <padding>
-      <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
-    </padding>
-    <Label maxHeight="1.7976931348623157E308" text="Left status" HBox.hgrow="ALWAYS">
-      <font>
-        <Font size="11.0" fx:id="x3" />
-      </font>
-      <textFill>
-        <Color red="0.625" green="0.625" blue="0.625" fx:id="x4" />
-      </textFill>
-    </Label>
-    <Pane HBox.hgrow="ALWAYS" />
-    <Label font="$x3" text="Right status" textFill="$x4" HBox.hgrow="NEVER" />
-  </HBox>
+  <TextArea fx:id="terminalTextArea" prefHeight="200.0" prefWidth="900.0" />
 </VBox>

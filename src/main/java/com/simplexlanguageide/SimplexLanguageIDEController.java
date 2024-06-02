@@ -8,13 +8,28 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 
 public class SimplexLanguageIDEController {
+    @FXML
+    private VBox vboxWindow;
 
-    public VBox vboxWindow;
+    @FXML
+    private MenuItem lexicalAnalysisMenuItem;
+
+    @FXML
+    private MenuItem syntaxAnalysisMenuItem;
+
+    @FXML
+    private MenuItem semanticAnalysisMenuItem;
+
+    @FXML
+    private MenuItem intermediateCodeGenerationMenuItem;
+
+    @FXML
+    private MenuItem codeGenerationMenuItem;
+
     @FXML
     private MenuItem newMenuItem;
 
@@ -65,6 +80,10 @@ public class SimplexLanguageIDEController {
     @FXML
     private MenuItem unselectAllMenuItem;
 
+
+    @FXML
+    private TextArea terminalTextArea;
+
     @FXML
     public void initialize() {
         newMenuItem.setOnAction(event -> handleNew());
@@ -85,6 +104,12 @@ public class SimplexLanguageIDEController {
         deleteMenuItem.setOnAction(event -> handleDelete());
         selectAllMenuItem.setOnAction(event -> handleSelectAll());
         unselectAllMenuItem.setOnAction(event -> handleUnselectAll());
+
+        lexicalAnalysisMenuItem.setOnAction(event -> run("lexical"));
+        syntaxAnalysisMenuItem.setOnAction(event -> run("syntax"));
+        semanticAnalysisMenuItem.setOnAction(event -> run("semantic"));
+        intermediateCodeGenerationMenuItem.setOnAction(event -> run("intermediate"));
+        codeGenerationMenuItem.setOnAction(event -> run("code"));
     }
 
     private void handleNew() {
@@ -182,5 +207,57 @@ public class SimplexLanguageIDEController {
 
     private void handleUnselectAll() {
         textArea.deselect();
+    }
+
+
+
+    @FXML
+    private void run(String arg) {
+        String codeText = textArea.getText();
+
+        try {
+            // Create a temporary file to store the code
+            File tempFile = File.createTempFile("temp_code", ".txt");
+            try (FileWriter writer = new FileWriter(tempFile)) {
+                writer.write(codeText);
+            }
+
+            // Get the absolute path of the temporary file
+            String tempFilePath = tempFile.getAbsolutePath();
+
+            // Specify the absolute path to the Linux executable
+            String executablePath = "src/main/resources/libs/simplex-language";
+
+            // Construct the command to execute the Linux executable
+            String command = executablePath + " " + tempFilePath + " " + arg;
+
+            System.out.println("Command: " + command);
+
+            // Execute the command using ProcessBuilder
+            ProcessBuilder processBuilder = new ProcessBuilder(command.split(" "));
+            processBuilder.redirectErrorStream(true); // Redirect error stream to input stream
+
+            Process process = processBuilder.start();
+
+            // Read output from the process and append it to terminalTextArea
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
+                StringBuilder output = new StringBuilder();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    output.append(line).append("\n");
+                }
+                terminalTextArea.setText(output.toString());
+            }
+
+            // Wait for the process to complete
+            int exitCode = process.waitFor();
+            System.out.println("Process exited with code: " + exitCode);
+
+            // Delete the temporary file after execution
+            tempFile.delete();
+
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
