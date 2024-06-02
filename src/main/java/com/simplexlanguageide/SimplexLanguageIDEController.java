@@ -275,7 +275,6 @@ public class SimplexLanguageIDEController {
             }
 
             if (Objects.equals(type, "code")) {
-                terminalTextArea.setText("safasaf");
                 String command2 = "java -jar src/main/resources/libs/rars.jar a " + tempFilePath2;
                 System.out.println(command2);
 

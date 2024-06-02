@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
+
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
@@ -44,26 +44,34 @@
       <MenuItem mnemonicParsing="false" text="About Simplex Language write" />
     </Menu>
   </MenuBar>
-  <SplitPane dividerPositions="0.8" focusTraversable="true" VBox.vgrow="ALWAYS">
-    <ScrollPane>
-      <AnchorPane id="Content" prefHeight="545.0" prefWidth="430.0">
-        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="&#10;" text="Code" textAlignment="CENTER">
-          <font>
-            <Font size="18.0" fx:id="x1" />
-          </font>
-          <textFill>
-            <Color red="0.624" green="0.624" blue="0.624" fx:id="x2" />
-          </textFill>
-        </Label>
-        <TextArea fx:id="textArea" layoutX="14.0" layoutY="40.0" prefHeight="500.0" prefWidth="700.0" />
-      </AnchorPane>
-    </ScrollPane>
-    <AnchorPane prefHeight="551.0" prefWidth="200.0">
-      <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Assembly" textAlignment="CENTER" textFill="$x2" />
-      <TextArea fx:id="assemblyTextArea" layoutX="14.0" layoutY="40.0" prefHeight="500.0" prefWidth="700.0" />
+  <SplitPane dividerPositions="0.5" focusTraversable="true" VBox.vgrow="ALWAYS">
+    <AnchorPane prefHeight="551.0" prefWidth="450.0">
+      <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" text="Code" textAlignment="CENTER">
+        <font>
+          <Font size="18.0" />
+        </font>
+        <textFill>
+          <Color red="0.624" green="0.624" blue="0.624" />
+        </textFill>
+      </Label>
+      <TextArea fx:id="textArea" layoutX="14.0" layoutY="40.0" prefHeight="500.0" prefWidth="420.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
+    </AnchorPane>
+    <AnchorPane prefHeight="551.0" prefWidth="450.0">
+      <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" text="Assembly" textAlignment="CENTER"/>
+      <TextArea fx:id="assemblyTextArea" layoutX="14.0" layoutY="40.0" prefHeight="500.0" prefWidth="420.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
     </AnchorPane>
   </SplitPane>
   <ScrollPane VBox.vgrow="ALWAYS">
-    <TextArea fx:id="terminalTextArea" prefHeight="200.0" prefWidth="900.0"/>
+    <AnchorPane prefHeight="300.0" prefWidth="900.0">
+      <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" text="Terminal" textAlignment="CENTER">
+        <font>
+          <Font size="18.0" />
+        </font>
+        <textFill>
+          <Color red="0.624" green="0.624" blue="0.624" />
+        </textFill>
+      </Label>
+      <TextArea fx:id="terminalTextArea" prefHeight="200.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" style="-fx-font-family: 'Courier New', monospace; -fx-font-size: 14px; -fx-background-color: black; -fx-text-fill: lime;" />
+    </AnchorPane>
   </ScrollPane>
 </VBox>
