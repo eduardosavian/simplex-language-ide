@@ -11,7 +11,10 @@
   <component name="ChangeListManager">
     <list default="true" id="cc4ad058-9eee-460a-9803-24751be0d375" name="Changes" comment="Add save assembly">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/libs/simplex-language" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/libs/simplex-language" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/simplexlanguageide/SimplexLanguageIDEController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/simplexlanguageide/SimplexLanguageIDEController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/libs/riscv1.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/libs/simplex-language" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/libs/sla.asm" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,6 +137,7 @@
       <workItem from="1717358840632" duration="4750000" />
       <workItem from="1717366178146" duration="176000" />
       <workItem from="1717442653969" duration="4258000" />
+      <workItem from="1719259491375" duration="2989000" />
     </task>
     <task id="LOCAL-00001" summary="Add bbase">
       <option name="closed" value="true" />

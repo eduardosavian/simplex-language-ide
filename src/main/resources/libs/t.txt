@@ -1,9 +1,10 @@
 .data
 __runtime.input_int: .string "(int) << "
+__runtime.input_str: .string "(string) << "
 __runtime.output: .string ">> "
 __runtime.newline: .string "\n"
 
-.align 2 # Word alignment
+.align 2
 i_i_ec0c35c4: .space 4
 
 .text
@@ -24,13 +25,12 @@ __runtime.write_newline:
 
 # Write a null terminated string to console
 __runtime.write_string:
-	sw t0, (sp) # Pop argument into t0
+	lw a0, (sp) # Pop argument into a0
 	addi sp, sp, 4
 	addi sp, sp, -4 # Push ra to stack
 	sw ra, (sp)
 
 	li a7, 4
-	add a0, t0, zero
 	ecall
 
 	lw ra, (sp) # Restore return address
@@ -44,8 +44,6 @@ __runtime.write_int:
 
 	li a7, 1  # Set system service ID
 	ecall     # Perform the syscall
-
-	call __runtime.write_newline
 
 	lw ra, (sp)    # Restore return address by popping it off the stack
 	addi sp, sp, 4
@@ -73,22 +71,28 @@ __runtime.read_int:
 
 # Program entry point
 __runtime.entry_point:
+	call main
+	j __runtime.exit
 
-
+	# Expand program here
+		
 	# Push i_i_ec0c35c4
 	la s0, i_i_ec0c35c4
 	addi sp, sp, -4
 	sw s0, (sp)
-
+	
 	# Push 10
 	li s0, 10
 	addi sp, sp, -4
 	sw s0, (sp)
-
-	# Store
+	
+	# Store 
 	lw s0, (sp)
 	lw s1, 4(sp)
 	sw s0, (s1)
 	addi sp, sp, 8
+	
+
+__runtime.exit:
 
 

@@ -115,9 +115,9 @@ public class SimplexLanguageIDEController {
         selectAllMenuItem.setOnAction(event -> handleSelectAll());
         unselectAllMenuItem.setOnAction(event -> handleUnselectAll());
 
-        lexicalAnalysisMenuItem.setOnAction(event -> run("analysis", "lex -verbose"));
-        syntaxAnalysisMenuItem.setOnAction(event -> run("analysis","parse -verbose"));
-        semanticAnalysisMenuItem.setOnAction(event -> run("analysis","check -verbose"));
+        lexicalAnalysisMenuItem.setOnAction(event -> run("analysis", "lex"));
+        syntaxAnalysisMenuItem.setOnAction(event -> run("analysis","parse"));
+        semanticAnalysisMenuItem.setOnAction(event -> run("analysis","check"));
         codeGeneratio.setOnAction(event -> run("code","compile"));
         runMenuItem.setOnAction(event -> run("code","run"));
         saveAssemblyMenuItem.setOnAction(event -> handleSaveAssembly());
@@ -267,28 +267,36 @@ public class SimplexLanguageIDEController {
                 writer.write(codeText);
             }
 
-            // Get the absolute path of the temporary file
             String tempFilePath = tempFile.getAbsolutePath();
             String tempFilePath2 = tempFile2.getAbsolutePath();
+            
+            String executablePath;
 
-            // Specify the absolute path to the Linux executable
-            String executablePath = "src/main/resources/libs/simplex-language";
+            String osName = System.getProperty("os.name").toLowerCase();
 
-            // Construct the command to execute the Linux executable
-            if (Objects.equals(arg, "compile") || Objects.equals(arg, "run")) {
-                arg = "compile -out:" + tempFilePath2;
+            if (osName.contains("win")) {
+                executablePath = "src/main/resources/libs/simplex-language-windows.exe";
+            } else if (osName.contains("linux")) {
+                executablePath = "src/main/resources/libs/simplex-language-linux";
+            } else {
+                throw new UnsupportedOperationException("Unsupported operating system: " + osName);
             }
-            String command = executablePath + " " + tempFilePath + " " + arg;
+
+            String command = "";
+            if (Objects.equals(arg, "compile") || Objects.equals(arg, "run")) {
+                command = executablePath + " compile " + tempFilePath + " -out:" + tempFilePath2;
+            } else {
+                command = executablePath + " " + arg + " " + tempFilePath + " -verbose";
+            }
 
             System.out.println("Command: " + command);
 
-            // Execute the command using ProcessBuilder
             ProcessBuilder processBuilder = new ProcessBuilder(command.split(" "));
-            processBuilder.redirectErrorStream(true); // Redirect error stream to input stream
+            processBuilder.redirectErrorStream(true);
 
             Process process = processBuilder.start();
 
-            // Read output from the process and append it to terminalTextArea
+
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
                 StringBuilder output = new StringBuilder();
                 String line;
@@ -313,11 +321,10 @@ public class SimplexLanguageIDEController {
                 System.out.println(command2);
 
                 ProcessBuilder processBuilder2 = new ProcessBuilder(command2.split(" "));
-                processBuilder2.redirectErrorStream(true); // Redirect error stream to input stream
+                processBuilder2.redirectErrorStream(true);
 
                 Process process2 = processBuilder2.start();
 
-                // Read output from the process and append it to terminalTextArea
                 try (BufferedReader reader = new BufferedReader(new InputStreamReader(process2.getInputStream()))) {
                     StringBuilder output = new StringBuilder();
                     String line;
@@ -329,7 +336,6 @@ public class SimplexLanguageIDEController {
 
             }
 
-            // Delete the temporary files after execution
             tempFile.delete();
             tempFile2.delete();
 
